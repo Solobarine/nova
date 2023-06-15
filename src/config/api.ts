@@ -1,7 +1,7 @@
 interface Server {
     status: 'production' | 'development' | 'testing'
 }
-let server: Server = {
+const server: Server = {
     status: 'development'
 }
 let domain = ''

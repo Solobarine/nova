@@ -4,7 +4,7 @@ import postRequest from "../../utils/postRequest"
 import domain from '../../config/api'
 
 const login_user = (payload: UserLogin) => {
-    const url: string = `${domain}/login`
+    const url = `${domain}/login`
     const options = {
         method: 'POST',
         body: JSON.stringify(payload),
