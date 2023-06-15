@@ -1,0 +1,14 @@
+:root {
+  --primary: #e95b19;
+  --secondary: #999;
+  --text: #444;
+  --gold: #ffd700;
+  --silver: #c0c0c0;
+  --white: #eee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
