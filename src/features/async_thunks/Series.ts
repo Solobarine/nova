@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit/dist/createAsyncThunk"
+import { createAsyncThunk } from "@reduxjs/toolkit"
 import getRequest from "../../utils/getRequest"
 
 const all_series = () => {
@@ -7,7 +7,7 @@ const all_series = () => {
 }
 
 const single_series = (payload: number) => {
-    const url = `https://api.tvmaze.com/shows${payload}?embed=cast`
+    const url = `https://api.tvmaze.com/shows${payload}?embed[]=cast&embed[]=images`
     return getRequest(url)
 }
 
