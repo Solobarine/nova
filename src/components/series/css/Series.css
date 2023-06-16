@@ -1,0 +1,141 @@
+#series_background {
+    position: relative;
+}
+
+#swiper {
+    display: block;
+    height: 500px;
+    overflow: hidden;
+}
+
+#swiper img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+
+#series_description {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    width: 300px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    color: var(--white);
+}
+
+#series_description a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 28px;
+}
+
+#ratings {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+#ratings p {
+    font-size: 25px;
+}
+
+#year_length {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+}
+#series_genres {
+    display: flex;
+    column-gap: 20px;
+}
+
+#series_genres button {
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+    color: var(--white);
+}
+
+#summary_head,
+#summary {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#summary {
+    max-width: 800px;
+    width: 80%;
+    margin: auto;
+}
+
+#cast_section {
+    padding: 20px;
+    display: grid;
+    row-gap: 20px;
+}
+
+#cast_section h3 {
+    text-align: center;
+}
+
+#cast_section > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    gap: 25px;
+}
+
+.cast {
+    background-color: green;
+    width: 120px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.actor {
+    background-image: linear-gradient(45deg, var(--gold), var(--silver));
+}
+
+.actress {
+    background-image: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+.cast img {
+    display: block;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.cast div {
+    text-align: center;
+    font-size: .7rem;
+}
+
+#network {
+    background-color: var(--silver);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+#network div {
+    display: grid;
+    gap: 10px;
+}
+
+#network a {
+    text-decoration: none;
+    color: var(--primary);
+}
