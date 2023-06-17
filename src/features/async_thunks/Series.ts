@@ -7,7 +7,7 @@ const all_series = () => {
 }
 
 const single_series = (payload: number) => {
-    const url = `https://api.tvmaze.com/shows${payload}?embed[]=cast&embed[]=images`
+    const url = `https://api.tvmaze.com/shows/${payload}?embed[]=cast&embed[]=images`
     return getRequest(url)
 }
 
