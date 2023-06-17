@@ -2,7 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import { InitialState } from "../../interfaces/interface";
 import User from "../async_thunks/User";
 
-const initialState = {} as InitialState
+const initialState = {
+    value: {
+        data: [],
+        status: 0
+    },
+    loading: 'idle',
+    logged_in: false,
+    error: []
+} as InitialState
 
 const user = createSlice({
     name: 'user',
