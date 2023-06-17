@@ -1,3 +1,6 @@
+import { SingleSeries, SeriesInterface } from "./series_interface"
+
+
 interface UserLogin {
     email: string,
     password: string
@@ -29,7 +32,7 @@ interface InitialState {
 interface SeriesInitialState {
     all_series: {
         value: {
-            data: string[],
+            data: SeriesInterface[],
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
@@ -37,7 +40,7 @@ interface SeriesInitialState {
     },
     single_series: {
         value: {
-            data: string[],
+            data: SingleSeries,
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
@@ -45,4 +48,19 @@ interface SeriesInitialState {
     }
 }
 
-export type { UserLogin, UserRegister, Options, InitialState, SeriesInitialState }
+interface Input {
+    id: number,
+    name: string,
+    label: string,
+    type: string,
+    errorMessage: string,
+    pattern: undefined | string,
+    autocomplete: string,
+    required: boolean
+}
+
+interface FunctionInterface {
+    (e: React.ChangeEvent<HTMLInputElement>): void;
+  }
+
+export type { UserLogin, UserRegister, Options, InitialState, SeriesInitialState, Input, FunctionInterface }
