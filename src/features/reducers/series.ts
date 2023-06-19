@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Series from "../async_thunks/Series";
 import { SeriesInitialState } from "../../interfaces/interface";
-import { SingleSeries, SeriesInterface } from "../../interfaces/series_interface";
+import { SingleSeries } from "../../interfaces/series_interface";
 
 const single_data: SingleSeries = {
     "id": 0,
