@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { InitialState } from "../../interfaces/interface";
+import { setCookie } from '../../utils/cookie_helpers'
 import User from "../async_thunks/User";
 
 const initialState = {
@@ -33,6 +34,8 @@ const user = createSlice({
                     data,
                     status
                 }
+                localStorage.setItem('auth-token', data.authorization.token)
+                setCookie('auth-token', data.authorization.token)
                 state.error = []
                 state.logged_in = true
                 state.loading = 'success'
@@ -67,11 +70,14 @@ const user = createSlice({
         })
         .addCase(User.register.fulfilled, (state, actions) => {
             const { status, data } = actions.payload
+            
             if (status === 200) {
                 state.value = {
                     data,
                     status
                 }
+                setCookie('auth-token', data.authorization.token)
+                localStorage.setItem('auth-token', data.authorization.token)
                 state.logged_in = true
                 state.loading = 'success'
             } else {
@@ -105,6 +111,7 @@ const user = createSlice({
         })
         .addCase(User.jwt_login.fulfilled, (state, actions) => {
             const { status, data } = actions.payload
+            
             if (status === 200) {
                 state.value = {
                     data,
