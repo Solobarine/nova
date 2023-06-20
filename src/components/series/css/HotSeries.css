@@ -1,0 +1,37 @@
+#best_series {
+    padding: 15px;
+    background-color: var(--silver);
+}
+
+#best_series > div {
+    max-width: 60rem;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border: 1px solid var(--secondary);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.best_series_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.best_series_title a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.best_series_title a:hover {
+    color: var(--red);
+}
+
+.swiper {
+    max-width: 100%;
+    margin-left: 0;
+
+  }
