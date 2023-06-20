@@ -30,13 +30,13 @@ const register_user = (payload: UserRegister) => {
 }
 
 const jwt_login = (cookies: string) => {
-    const url = `${domain}/`
+    const url = `${domain}/jwt-login`
     const options = {
         method: 'POST',
         body: JSON.stringify({}),
         headers: {
             'Content-Type': 'application/json',
-            token: cookies
+            Authorization: `Bearer ${cookies}`
         }
     }
 
