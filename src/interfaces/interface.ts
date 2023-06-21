@@ -1,5 +1,5 @@
+import { SerializedError } from "@reduxjs/toolkit"
 import { SingleSeries, SeriesInterface } from "./series_interface"
-
 
 interface UserLogin {
     email: string,
@@ -26,7 +26,7 @@ interface InitialState {
     },
     loading: 'idle' | 'pending' | 'success' | 'failed',
     logged_in: true | false,
-    error: string[]
+    error: SerializedError
 }
 
 interface SeriesInitialState {
@@ -36,7 +36,7 @@ interface SeriesInitialState {
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
-        error: string[]
+        error: SerializedError
     },
     single_series: {
         value: {
@@ -44,9 +44,11 @@ interface SeriesInitialState {
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
-        error: string[]
+        error: SerializedError
     }
 }
+
+
 
 interface Input {
     id: number,

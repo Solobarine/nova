@@ -2,6 +2,13 @@ import { useState } from 'react'
 import { FunctionInterface, Input } from "../../interfaces/interface"
 import './css/FormInput.css'
 
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    // extends React's HTMLAttributes
+    focused?: string;
+  }
+}
+
 const FormInput = (props: {
   details: Input,
   value: string,

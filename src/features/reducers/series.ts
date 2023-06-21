@@ -68,7 +68,7 @@ const initialState: SeriesInitialState = {
             status: 0
         },
         loading: 'idle',
-        error: []
+        error: {},
     },
     single_series: {
         value: {
@@ -76,7 +76,7 @@ const initialState: SeriesInitialState = {
             status: 0
         },
         loading: 'idle',
-        error: []
+        error: {}
     }
 }
 
@@ -90,7 +90,7 @@ const series = createSlice({
                 data: [],
                 status: 0
             }
-            state.all_series.error = []
+            state.all_series.error = {}
             state.all_series.loading = 'pending'
         })
         .addCase(Series.get_series.fulfilled, (state, actions) => {
@@ -111,11 +111,10 @@ const series = createSlice({
             }
         })
         .addCase(Series.get_series.rejected, (state, actions) => {
-            const { status, data } = actions.payload
-            state.all_series.error = data
+            state.all_series.error = actions.error
             state.all_series.value = {
                 data: [],
-                status
+                status: 0
             }
             state.all_series.loading = 'failed'
         })
@@ -124,7 +123,7 @@ const series = createSlice({
                 data: initialState.single_series.value.data,
                 status: 0
             }
-            state.single_series.error = []
+            state.single_series.error = {}
             state.single_series.loading = 'pending'
         })
         .addCase(Series.single_series.fulfilled, (state, actions) => {
@@ -134,7 +133,7 @@ const series = createSlice({
                     data,
                     status
                 }
-                state.single_series.error = []
+                state.single_series.error = {}
                 state.single_series.loading = 'success'
             } else {
                 state.single_series.error = data
@@ -146,11 +145,10 @@ const series = createSlice({
             }
         })
         .addCase(Series.single_series.rejected, (state, actions) => {
-            const { status, data } = actions.payload
-            state.single_series.error = actions.payload.data
+            state.single_series.error = actions.error
             state.single_series.value = {
                 data: single_data,
-                status
+                status: 0
             }
             state.single_series.loading = 'failed'
         })

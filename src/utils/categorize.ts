@@ -1,7 +1,7 @@
-import { Images, ImagesOnlyOriginal, SeriesInterface } from "../interfaces/series_interface";
+import { Images, SeriesInterface } from "../interfaces/series_interface";
 
-const categorize_images = (images: Images[] | ImagesOnlyOriginal[], criteria: string) => {
-    const data: any = []
+const categorize_images = (images: Images[], criteria: string) => {
+    const data: Images[] = []
     console.log(images);
     
     images.map(item => {

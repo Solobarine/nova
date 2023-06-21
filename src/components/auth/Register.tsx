@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { register_inputs } from "./inputs"
 import FormInput from "./FormInput"
-import { setCookie } from '../../utils/cookie_helpers'
+import { AppDispatch, RootState } from '../../types/types'
 import user from '../../features/async_thunks/User'
 import './css/Register.css'
 
 const Register = () => {
-    const dispatch = useDispatch()
+    const dispatch: AppDispatch = useDispatch()
     const navigate = useNavigate()
-    const user_details = useSelector(state => state.user)
+    const user_details = useSelector((state: RootState) => state.user)
     console.log(user_details)
     
     const [values, setValues] = useState({
@@ -20,11 +20,13 @@ const Register = () => {
         confirm_password: ''
     })
 
+    const inputs: { [key: string]: string } = values
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({...values, [e.target.name]: e.target.value})
     }
 
-    const handle_click = (e) => {
+    const handle_click = (e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
         dispatch(user.register(values))
         if (user_details.value.status === 200) {
@@ -38,7 +40,7 @@ const Register = () => {
             <h2>Create an Account</h2>
             {
                 register_inputs.map(input =>(
-                    <FormInput key={input.id} details={input} value={values[input.name]} onChange={onChange} />
+                    <FormInput key={input.id} details={input} value={inputs[input.name]} onChange={onChange} />
                 ))
             }
             <input type="submit" value="Register" onClick={handle_click} />

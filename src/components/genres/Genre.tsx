@@ -3,20 +3,22 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import series from '../../features/async_thunks/Series'
+import { sort_by_category } from '../../utils/categorize'
+import { AppDispatch, RootState } from '../../types/types'
 import Series from './Series'
 import './css/Genre.css'
-import { sort_by_category } from '../../utils/categorize'
 
 const Genre = () => {
-  const dispatch = useDispatch()
-  const all_series = useSelector((state: any) => state.series.all_series)
+  const dispatch: AppDispatch = useDispatch()
+  const all_series = useSelector((state: RootState) => state.series.all_series)
 
   useEffect(() => {
     if(all_series.value.data.length < 1) dispatch(series.get_series())
-  }, [dispatch])
+  }, [dispatch, all_series])
   
   console.log(all_series)
   const { category } = useParams()
+  const genre = category as string
   
   const [pageNumber, setPageNumber] = useState(0)
 
@@ -27,7 +29,7 @@ const Genre = () => {
   }
 
   if (all_series.loading === 'success') {
-    const genres = sort_by_category(all_series.value.data, category)
+    const genres = sort_by_category(all_series.value.data, genre)
     console.log(genres)
 
     // Add Pagination
@@ -36,13 +38,16 @@ const Genre = () => {
     const display_series = genres.slice(series_shown, series_shown + series_per_page)
     const page_count = Math.ceil(genres.length / series_per_page)
 
-    const change_page = ({selected}) => {
+    const change_page = (page: {
+      selected: number
+    }) => {
+      const selected = page.selected
       setPageNumber(selected)
     }
 
     return (
       <section id='category'>
-        <h1>{`${category.charAt(0).toUpperCase()}${category.substring(1, category.length)}`}</h1>
+        <h1>{`${genre.charAt(0).toUpperCase()}${genre.substring(1, genre.length)}`}</h1>
         <div>
           {
             display_series.map(series => (

@@ -1,36 +1,41 @@
-import { useCookies } from "react-cookie"
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { Outlet, useNavigate } from "react-router-dom"
 import user from "../../features/async_thunks/User"
-import { getCookie } from "../../utils/cookie_helpers"
+import { AppDispatch, RootState } from '../../types/types'
 
-const AuthCheck = () => {
+const AuthCheck = (): React.JSX.Element => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const user_detail = useSelector(state => state.user)
+    const dispatch: AppDispatch = useDispatch()
+    const user_detail = useSelector((state: RootState) => state.user)
 
-    const cookie = localStorage.getItem('auth-token')
+    const cookie = localStorage.getItem('auth-token') as string
 
     if (!cookie) {
-        return navigate('/login')
+        navigate('/login')
     }
 
     useEffect(() => {
         if (user_detail.logged_in !== true) {
             dispatch(user.jwt_login(cookie))
         }
-    }, [dispatch])
+    }, [dispatch, user_detail, cookie])
 
-    if (user_detail.loading === 'pending') return <p>loading...</p>
-    if (user_detail.loading === 'failed') return <p>oops</p>
+    if (user_detail.loading === 'pending') {
+        return <p>loading...</p>
+    }
+    if (user_detail.loading === 'failed') {
+        navigate('/login')
+    }
 
     if (user_detail.value.status === 200) {
-        return <>
+        return( <>
                 <Outlet/>
                 <p>yeah</p>
             </>
+        )
     }
+    return AuthCheck()
 }
 
 export default AuthCheck

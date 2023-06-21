@@ -23,7 +23,7 @@ const user = createSlice({
                 data: [],
                 status: 0
             }
-            state.error = []
+            state.error = {}
             state.logged_in = false
             state.loading = 'pending'
         })
@@ -36,7 +36,7 @@ const user = createSlice({
                 }
                 localStorage.setItem('auth-token', data.authorization.token)
                 setCookie('auth-token', data.authorization.token)
-                state.error = []
+                state.error = {}
                 state.logged_in = true
                 state.loading = 'success'
             } else {
@@ -50,11 +50,10 @@ const user = createSlice({
             }
         })
         .addCase(User.login.rejected, (state, actions) => {
-            const { status, data } = actions.payload
-            state.error = data
+            state.error = actions.error
             state.value = {
                 data: [],
-                status
+                status: 0
             }
             state.logged_in = false
             state.loading = 'failed'
@@ -64,7 +63,7 @@ const user = createSlice({
                 data: [],
                 status: 0
             }
-            state.error = []
+            state.error = {}
             state.logged_in = false
             state.loading = 'pending'
         })
@@ -91,11 +90,10 @@ const user = createSlice({
             }
         })
         .addCase(User.register.rejected, (state, actions) => {
-            const { status, data } = actions.payload
-            state.error = data
+            state.error = actions.error
             state.value = {
                 data: [],
-                status
+                status: 0
             }
             state.logged_in = false
             state.loading = 'failed'
@@ -105,7 +103,7 @@ const user = createSlice({
                 data: [],
                 status: 0
             }
-            state.error = []
+            state.error = {}
             state.logged_in = false
             state.loading = 'pending'
         })
@@ -130,11 +128,10 @@ const user = createSlice({
             }
         })
         .addCase(User.jwt_login.rejected, (state, actions) => {
-            const { status, data } = actions.payload
-            state.error = data
+            state.error = actions.error
             state.value = {
                 data: [],
-                status
+                status: 0
             }
             state.logged_in = false
             state.loading = 'failed'

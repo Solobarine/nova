@@ -1,5 +1,4 @@
 import './css/Series.css'
-import { data } from '../../config/seed'
 import Star from '../../assets/Star'
 import { Link } from 'react-router-dom'
 

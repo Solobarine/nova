@@ -5,7 +5,7 @@ const postRequest = async (url: string, options: RequestInit) => {
         const { status } = response
         const data = await response.json()
         return { data, status }
-    } catch (error: any) {
+    } catch (error: unknown) {
         return error
     }
 }

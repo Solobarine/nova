@@ -3,20 +3,21 @@ import { useEffect } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
 import series from "../../features/async_thunks/Series"
 import { sort_by_category, sort_by_ratings } from "../../utils/categorize"
+import { SeriesInterface } from "../../interfaces/series_interface"
+import Series from "../genres/Series"
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import Series from "../genres/Series"
 import './css/HotSeries.css'
-import { SeriesInterface } from "../../interfaces/series_interface"
+import { AppDispatch, RootState } from "../../types/types"
 
 const HotSeries = () => {
-    const dispatch = useDispatch()
-    const all_series = useSelector((state) => state.series.all_series)
+    const dispatch: AppDispatch = useDispatch()
+    const all_series = useSelector((state: RootState) => state.series.all_series)
 
     useEffect(() => {
         if (all_series.value.data.length < 1) dispatch(series.get_series())
-    }, [dispatch])
+    }, [dispatch, all_series])
 
     if (all_series.value.data.length !== 0) {
         const action_series = sort_by_category(all_series.value.data, 'action')

@@ -4,15 +4,16 @@ import series from "../../features/async_thunks/Series"
 import { get_categories } from "../../utils/categorize"
 import './css/Genres.css'
 import { Link } from "react-router-dom"
+import { AppDispatch, RootState } from "../../types/types"
 
 const Genres = () => {
-    const dispatch = useDispatch()
-    const all_series = useSelector((state: any) => state.series.all_series)
+    const dispatch: AppDispatch = useDispatch()
+    const all_series = useSelector((state: RootState) => state.series.all_series)
     console.log(all_series)
 
     useEffect(() => {
         if(all_series.value.data.length < 1) dispatch(series.get_series())
-    }, [dispatch])
+    }, [dispatch, all_series])
     if (all_series.value) {
         const genres: string[] = get_categories(all_series.value.data)
         console.log(genres)
@@ -34,7 +35,7 @@ const Genres = () => {
         return <h1>Loading. Please wait...</h1>
     }
 
-    if (!all_series.value && all_series.console.error) {
+    if (!all_series.value && all_series.error) {
         return <h1>Sorry.Unable to get Categories</h1>
     }
     

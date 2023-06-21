@@ -5,7 +5,7 @@ const getRequest = async(url: string) => {
         const data = await response.json()
         const json = {data, status}
         return json  
-    } catch (error: any) {
+    } catch (error: unknown) {
        return error
     }
 }

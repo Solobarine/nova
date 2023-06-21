@@ -1,22 +1,22 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { categorize_images } from "../../utils/categorize"
-import Star from "../../assets/Star"
-import './css/Series.css'
+import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
+import { categorize_images } from "../../utils/categorize"
+import { Cast, Images, SingleSeries } from "../../interfaces/series_interface"
+import Star from "../../assets/Star"
+import { AppDispatch, RootState } from "../../types/types"
 import series from "../../features/async_thunks/Series"
-import { useParams } from "react-router-dom"
-import { SingleSeries } from "../../interfaces/series_interface"
+import './css/Series.css'
 
 const Series = () => {
-    const dispatch = useDispatch()
-    const single_series = useSelector(state => state.series.single_series)
+    const dispatch: AppDispatch= useDispatch()
+    const single_series = useSelector((state: RootState) => state.series.single_series)
     
     const {series_id} = useParams()
     
     useEffect(() => {
         dispatch(series.single_series(Number(series_id)))
-    }, [dispatch])
+    }, [dispatch, series_id])
 
     const data : SingleSeries = single_series.value.data
     console.log(data);
@@ -31,8 +31,8 @@ const Series = () => {
     
     
     if (single_series.value.data.id) {
-        const background = categorize_images(data._embedded.images, 'background')
-        const posters = categorize_images(data._embedded.images, 'poster')
+        const background = categorize_images(data._embedded.images, 'background') as Images[]
+        const posters = categorize_images(data._embedded.images, 'poster') as Images[]
         
         return (
             <section id='series_section'>
@@ -77,7 +77,7 @@ const Series = () => {
                     <h3>Cast</h3>
                     <div>
                         {
-                            data._embedded.cast.map((cast: any, index) => (
+                            data._embedded.cast.map((cast: Cast, index) => (
                                 (index < 7)
                                 &&
                                 <div key={index} className={`cast ${(cast.person.gender === 'Male') ? 'actor' : 'actress'}`}>
