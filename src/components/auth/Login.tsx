@@ -37,7 +37,7 @@ const Login = () => {
     <section id='login_section'>
         <form>
             <h2>Welcome Back</h2>
-            {(user_details.error) && <span id="login_error">{user_details.error.message}</span>}
+            {(user_details.error.message) && <span id="login_error">{user_details.error.message}</span>}
             {
                 login_inputs.map(input => (
                     <FormInput key={input.id} details={input} value={inputs[input.name]} onChange={onChange} />
