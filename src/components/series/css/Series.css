@@ -63,7 +63,8 @@
 }
 
 #summary_head,
-#summary {
+#cast_section h3 {
+    font-size: 25px;
     text-align: center;
     margin-top: 20px;
 }
@@ -72,16 +73,15 @@
     max-width: 800px;
     width: 80%;
     margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
 }
 
 #cast_section {
     padding: 20px;
     display: grid;
     row-gap: 20px;
-}
-
-#cast_section h3 {
-    text-align: center;
 }
 
 #cast_section > div {

@@ -1,8 +1,13 @@
 const postRequest = async (url: string, options: RequestInit) => {
-    const response = await fetch(url, options)
-    const { status } = response
-    const data = response.json()
-    return { data, status }
+    
+    try {
+        const response = await fetch(url, options)
+        const { status } = response
+        const data = await response.json()
+        return { data, status }
+    } catch (error: unknown) {
+        return error
+    }
 }
 
 export default postRequest

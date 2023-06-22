@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;800&family=Pacifico&family=Righteous&display=swap');
+
 :root {
   --primary: #e95b19;
   --secondary: #999;
@@ -5,10 +7,38 @@
   --gold: #ffd700;
   --silver: #c0c0c0;
   --white: #eee;
+  --red: #f00;
 }
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Kanit', Arial, Helvetica, sans-serif;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+#Page-1,
+#logo {
+  fill: var(--gold);
+}
+
+input[type=submit] {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 200px;
 }

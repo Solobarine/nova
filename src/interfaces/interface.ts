@@ -1,5 +1,5 @@
+import { SerializedError } from "@reduxjs/toolkit"
 import { SingleSeries, SeriesInterface } from "./series_interface"
-
 
 interface UserLogin {
     email: string,
@@ -13,6 +13,17 @@ interface UserRegister {
     confirm_password: string
 }
 
+interface UserDetails {
+    name: string
+    email: string
+    created_at: string
+    updated_at: string
+    authorization: {
+        token: string
+        type: string
+    }
+}
+
 interface Options {
     method: 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE'
     body: string,
@@ -21,12 +32,12 @@ interface Options {
 
 interface InitialState {
     value: {
-        data: string[],
+        data: UserDetails,
         status: number
     },
     loading: 'idle' | 'pending' | 'success' | 'failed',
     logged_in: true | false,
-    error: string[]
+    error: SerializedError
 }
 
 interface SeriesInitialState {
@@ -36,7 +47,7 @@ interface SeriesInitialState {
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
-        error: string[]
+        error: SerializedError
     },
     single_series: {
         value: {
@@ -44,9 +55,11 @@ interface SeriesInitialState {
             status: number
         },
         loading: 'idle' | 'pending' | 'success' | 'failed',
-        error: string[]
+        error: SerializedError
     }
 }
+
+
 
 interface Input {
     id: number,
@@ -59,8 +72,23 @@ interface Input {
     required: boolean
 }
 
+interface AllSeriesPayload {
+    data: SeriesInterface[],
+    status: number
+}
+
+interface SingleSeriesPayload {
+    data: SingleSeries,
+    status: number
+}
+
+interface UserPayload {
+    data: UserDetails,
+    status: number
+}
+
 interface FunctionInterface {
     (e: React.ChangeEvent<HTMLInputElement>): void;
   }
 
-export type { UserLogin, UserRegister, Options, InitialState, SeriesInitialState, Input, FunctionInterface }
+export type { UserLogin, UserRegister, UserDetails, Options, InitialState, SeriesInitialState, Input, FunctionInterface, UserPayload, AllSeriesPayload, SingleSeriesPayload }

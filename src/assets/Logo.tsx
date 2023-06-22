@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 42.877 42.877" xml:space="preserve">
+const Logo = () => {
+  return (
+    <div id="logo_container">
+        <svg height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+		viewBox="0 0 42.877 42.877" xmlSpace="preserve">
 <g>
-	<path style="fill:#ffd700;" d="M16.216,22.056c-0.093,0.636-0.205,1.271-0.317,1.903c-0.287,1.619-0.559,3.15-0.502,4.72
+	<path id="logo" d="M16.216,22.056c-0.093,0.636-0.205,1.271-0.317,1.903c-0.287,1.619-0.559,3.15-0.502,4.72
 		c0.097,2.722,1.85,4.899,4.465,5.548c1.958,0.488,4.017,0.368,6.38-0.373c5.487-1.719,9.924-5.118,13.564-10.391
 		c2.146-3.106,3.148-6.128,3.066-9.239c-0.065-2.627-1.68-4.771-4.108-5.463c-2.07-0.589-4.122-0.538-6.476,0.172
 		c0.34,0.144,0.657,0.327,0.953,0.552c1.734,1.318,2.295,3.258,1.666,5.766c-0.779,3.1-2.596,5.681-4.236,7.857
@@ -17,3 +18,8 @@
 		c-2.29,3.45-3.269,6.34-3.174,9.367C0.104,31.672,2.17,33.959,5.269,34.386z"/>
 </g>
 </svg>
+    </div>
+  )
+}
+
+export default Logo

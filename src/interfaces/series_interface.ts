@@ -179,8 +179,8 @@ interface SingleSeries {
     },
     "_embedded": {
         "cast": Cast[],
-        "images": Images[] | ImagesOnlyOriginal[]
+        "images": Images[]
     }
 }
 
-export type { SeriesInterface, SingleSeries, Images, ImagesOnlyOriginal }
+export type { Cast, SeriesInterface, SingleSeries, Images, ImagesOnlyOriginal }

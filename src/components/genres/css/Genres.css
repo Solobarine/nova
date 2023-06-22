@@ -1,0 +1,20 @@
+#categories * {
+    text-align: center;
+}
+
+#categories h1 {
+    font-family: 'Righteous', serif;
+    margin: 20px 0;
+    font-size: 25px;
+}
+
+.category {
+    display: block;
+    text-decoration: none; 
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.category:hover {
+    color: var(--primary);
+}

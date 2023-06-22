@@ -1,0 +1,40 @@
+#sidebar {
+    padding: 10px;
+}
+
+#sidebar h3 {
+    margin-bottom: 20px;
+}
+
+.media {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.media > div {
+    background-color: var(--white);
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.media img {
+    display: block;
+    width: 30px;
+}
+
+#side_categories a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+#side_categories a:hover {
+    color: var(--primary);
+}
