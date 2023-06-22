@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Series from "../async_thunks/Series";
-import { SeriesInitialState } from "../../interfaces/interface";
+import { AllSeriesPayload, SingleSeriesPayload, SeriesInitialState } from "../../interfaces/interface";
 import { SingleSeries } from "../../interfaces/series_interface";
 
 const single_data: SingleSeries = {
@@ -94,7 +94,8 @@ const series = createSlice({
             state.all_series.loading = 'pending'
         })
         .addCase(Series.get_series.fulfilled, (state, actions) => {
-            const { status, data } = actions.payload
+            const payload = actions.payload as AllSeriesPayload
+            const { status, data } = payload
             console.log(actions.payload)
             if (status === 200) {
                 state.all_series.value = {
@@ -127,7 +128,8 @@ const series = createSlice({
             state.single_series.loading = 'pending'
         })
         .addCase(Series.single_series.fulfilled, (state, actions) => {
-            const { status, data } = actions.payload
+            const payload = actions.payload as SingleSeriesPayload
+            const { status, data } = payload
             if (status === 200) {
                 state.single_series.value = {
                     data,

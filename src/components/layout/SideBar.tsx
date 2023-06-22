@@ -3,12 +3,13 @@ import { Link } from "react-router-dom"
 import media_service from "../../media_service"
 import { get_categories } from "../../utils/categorize"
 import './css/Sidebar.css'
+import { RootState } from "../../types/types"
 
 const SideBar = () => {
-    const all_series = useSelector(state => state.series.all_series)
+    const all_series = useSelector((state: RootState) => state.series.all_series)
 
     let categories: string[]
-    if (all_series.value.data !== 0) {
+    if (all_series.value.data.length !== 0) {
         categories = get_categories(all_series.value.data).splice(0, 7)
         return (
             <section id="sidebar">
