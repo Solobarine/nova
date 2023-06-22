@@ -2,7 +2,7 @@ interface Server {
     status: 'production' | 'development' | 'testing'
 }
 const server: Server = {
-    status: 'development'
+    status: 'production'
 }
 let domain = ''
 
