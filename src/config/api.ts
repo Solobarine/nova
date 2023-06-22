@@ -6,6 +6,6 @@ const server: Server = {
 }
 let domain = ''
 
-domain = (server.status === 'production') ? 'https://whateverdomain' : 'http://localhost:8000/api'
+domain = (server.status === 'production') ? 'https://nova-solly.fly.dev/api' : 'http://localhost:8000/api'
 
 export default domain
