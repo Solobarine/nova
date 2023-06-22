@@ -24,7 +24,13 @@ const initialState = {
 const user = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.loading = 'idle'
+            state.logged_in = false
+            localStorage.removeItem('auth-token')
+        }
+    },
     extraReducers(builder) {
         builder.addCase(User.login.pending, (state) => {
             state.value = {
@@ -148,4 +154,5 @@ const user = createSlice({
     },
 })
 
+export const { logout } = user.actions
 export default user.reducer
