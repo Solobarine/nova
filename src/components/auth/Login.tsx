@@ -17,9 +17,9 @@ const Login = () => {
         email: '',
         password: '' 
     })
-    const inputs: { [key: string]: string} = values
+    const inputs: { [key: string]: string} = values;
 
-    console.log(values)
+    if (user_details.logged_in === true) navigate('/series')
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValues({...values, [e.target.name]: e.target.value})
@@ -27,11 +27,8 @@ const Login = () => {
 
     const handle_click = (e: React.UIEvent<HTMLInputElement>) => {
         e.preventDefault()
-        dispatch(user.login(values))
-        if (user_details.value.status === 200) {            
-            return navigate('/series')
+        dispatch(user.login(values));
         }
-    }
 
   return (
     <section id='login_section'>

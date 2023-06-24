@@ -16,7 +16,7 @@ const HotSeries = () => {
     const all_series = useSelector((state: RootState) => state.series.all_series)
 
     useEffect(() => {
-        if (all_series.value.data.length < 1) dispatch(series.get_series())
+        if (all_series.loading === 'idle') dispatch(series.get_series())
     }, [dispatch, all_series])
 
     if (all_series.value.data.length !== 0) {

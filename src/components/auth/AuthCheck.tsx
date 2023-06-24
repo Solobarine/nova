@@ -11,7 +11,7 @@ const AuthCheck = (): React.JSX.Element => {
 
     const cookie = localStorage.getItem('auth-token') as string
 
-    if (!cookie) {
+    if (!cookie || user_detail.loading === 'failed') {
         navigate('/login')
     }
 
@@ -19,23 +19,15 @@ const AuthCheck = (): React.JSX.Element => {
         if (user_detail.logged_in !== true) {
             dispatch(user.jwt_login(cookie))
         }
-    }, [dispatch, user_detail, cookie])
+    }, [dispatch, user_detail])
 
-    if (user_detail.loading === 'pending') {
-        return <p>loading...</p>
-    }
-    if (user_detail.loading === 'failed') {
+    if (user_detail.logged_in === false && user_detail.loading === 'failed') {
         navigate('/login')
     }
 
-    if (user_detail.value.status === 200) {
-        return( <>
-                <Outlet/>
-                <p>yeah</p>
-            </>
-        )
-    }
-    return AuthCheck()
+    return(
+        <Outlet/>
+    )
 }
 
 export default AuthCheck
