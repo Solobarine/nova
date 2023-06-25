@@ -32,7 +32,7 @@
 
 .nav_link:hover,
 .user_link:hover {
-    color: var(--gold);
+    color: var(--text);
 }
 
 .user_link {

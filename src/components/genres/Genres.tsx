@@ -9,14 +9,12 @@ import { AppDispatch, RootState } from "../../types/types"
 const Genres = () => {
     const dispatch: AppDispatch = useDispatch()
     const all_series = useSelector((state: RootState) => state.series.all_series)
-    console.log(all_series)
 
     useEffect(() => {
         if(all_series.loading === 'idle') dispatch(series.get_series())
     }, [dispatch, all_series])
     if (all_series.value) {
         const genres: string[] = get_categories(all_series.value.data)
-        console.log(genres)
         return (
             <section id="categories">
                 <h1>Categories</h1>
