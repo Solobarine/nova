@@ -15,8 +15,6 @@ const Genre = () => {
   useEffect(() => {
     if(all_series.loading === 'idle') dispatch(series.get_series())
   }, [dispatch, all_series])
-  
-  console.log(all_series)
   const { category } = useParams()
   const genre = category as string
   
@@ -30,7 +28,6 @@ const Genre = () => {
 
   if (all_series.loading === 'success') {
     const genres = sort_by_category(all_series.value.data, genre)
-    console.log(genres)
 
     // Add Pagination
     const series_per_page = 15
@@ -69,11 +66,7 @@ const Genre = () => {
         />
       </section>
     )
-    }
-
-    // if (all_series.loading === 'failed') {
-        
-    // }
+  }
 }
 
 export default Genre

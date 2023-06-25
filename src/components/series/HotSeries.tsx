@@ -26,7 +26,6 @@ const HotSeries = () => {
         const sci_fi_series = sort_by_category(all_series.value.data, 'science-Fiction')
         const romance_series = sort_by_category(all_series.value.data, 'romance')
         const top_rated: SeriesInterface[] = sort_by_ratings(all_series.value.data).reverse()
-        console.log(top_rated);
         
         return (
           <section id='best_series'>

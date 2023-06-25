@@ -1,0 +1,14 @@
+#landing {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background-image: url('/public/landing_two.jpg');
+    background-size: cover;
+    color: var(--gold);
+}
+
+#invite {
+    font-size: 28px;
+    margin-bottom: 5px;
+}

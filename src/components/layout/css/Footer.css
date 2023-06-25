@@ -10,6 +10,12 @@ footer .fa-brands {
     font-size: 20px;
     padding: 5px;
     color:  var(--primary);
+    transition: .4s ease;
+    cursor: pointer;
+}
+
+footer .fa-brands:hover {
+    scale: 1.2;
 }
 
 footer p {

@@ -19,17 +19,11 @@ const Series = () => {
     }, [dispatch, series_id])
 
     const data : SingleSeries = single_series.value.data
-    console.log(data);
-    
-    
-    
+
     if (single_series.loading === 'pending') return <h1>Please wait...</h1>
     
     if (single_series.loading === 'failed') return <h1>Sorry, unable to retrieve series.</h1>
-    
-    console.log(single_series);
-    
-    
+
     if (single_series.value.data.id) {
         const background = categorize_images(data._embedded.images, 'background') as Images[]
         const posters = categorize_images(data._embedded.images, 'poster') as Images[]
