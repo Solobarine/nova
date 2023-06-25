@@ -11,8 +11,6 @@ const Login = () => {
     const dispatch: AppDispatch = useDispatch()
     const navigate = useNavigate()
     const user_details = useSelector((state: RootState) => state.user)
-    console.log(user_details)
-
     const [values, setValues] = useState({
         email: '',
         password: '' 
